@@ -1,4 +1,4 @@
-package com.octet.fenouil.bean;
+package com.octest.fenouil.bean;
 
 public class ProductBean {
 	private String productName;

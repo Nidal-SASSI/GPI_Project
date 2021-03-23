@@ -1,4 +1,4 @@
-package com.octet.fenouil.bean;
+package com.octest.fenouil.bean;
 
 public class LoginBean {private String login;
 private String password;
