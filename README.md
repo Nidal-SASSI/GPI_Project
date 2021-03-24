@@ -34,6 +34,6 @@ Afin de faire fonctionner notre application sur votre machine, vous devez avoir 
 * **Azwaw GHARIS** _alias_ [@Azwaw-GHARIS](https://github.com/)
 * **Fatma BABOU** _alias_ [@Fatma-BABOU](https://github.com/)
 * **Emilia MAZARI** _alias_ [@Emilia-mazari](https://github.com/)
-*
+* **Nidal SASSI** _alias_ [@Nidal-SASSI](https://github.com/)
 
 Lisez la liste des [contributeurs](https://github.com/Projet-L3-Miage-equipe-N-10/banque/contributors) pour voir qui à aidé au projet !
