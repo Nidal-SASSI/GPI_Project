@@ -1,45 +1,61 @@
 package com.octest.fenouil.bean;
 
-public class LoginBean {private String login;
-private String password;
-private long role;
-private String confirmPassword;
 
 
+public class LoginBean extends  BaseBean {
+	
+	private String login;
+	private String password;
+	private long role;
+	private String confirmPassword;
+	
+	
+	
+	
 
 
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 
-public String getConfirmPassword() {
-	return confirmPassword;
-}
+	public long getRole() {
+		return role;
+	}
 
-public void setConfirmPassword(String confirmPassword) {
-	this.confirmPassword = confirmPassword;
-}
+	public void setRole(long role) {
+		this.role = role;
+	}
 
-public long getRole() {
-	return role;
-}
+	public String getLogin() {
+		return login;
+	}
 
-public void setRole(long role) {
-	this.role = role;
-}
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-public String getLogin() {
-	return login;
-}
+	public String getPassword() {
+		return password;
+	}
 
-public void setLogin(String login) {
-	this.login = login;
-}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-public String getPassword() {
-	return password;
-}
+	@Override
+	public String getKey() {
+		// TODO Auto-generated method stub
+		return id+"";
+	}
 
-public void setPassword(String password) {
-	this.password = password;
-}
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return login;
+	}
 
 }
