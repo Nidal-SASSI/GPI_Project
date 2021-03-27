@@ -10,8 +10,9 @@
 <br>
 <footer class="footer mt-auto py-3" style="background-color: #18334f">
   <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
+    <span class="text-muted">Web Design & Development by Team MIATECH</span>
   </div>
+  
 </footer>
 
 </body>
