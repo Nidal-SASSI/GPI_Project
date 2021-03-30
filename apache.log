@@ -1,0 +1,13 @@
+[Tue Mar 30 16:59:28.146238 2021] [fcgid:info] [pid 1322774:tid 139929164608640] mod_fcgid: Process manager 1322774 started
+[Tue Mar 30 16:59:28.146510 2021] [mpm_event:notice] [pid 1322760:tid 139929164608640] AH00489: Apache/2.4.43 (Unix) mod_fcgid/2.3.9 configured -- resuming normal operations
+[Tue Mar 30 16:59:28.146564 2021] [mpm_event:info] [pid 1322760:tid 139929164608640] AH00490: Server built: Jul 17 2020 12:36:16
+[Tue Mar 30 16:59:28.146570 2021] [core:notice] [pid 1322760:tid 139929164608640] AH00094: Command line: '/usr/alwaysdata/apache/2.4.43/bin/apache -f /home/fenouilmiatech/admin/config/apache/apache.conf -D FOREGROUND'
+[Tue Mar 30 16:59:28.376386 2021] [autoindex:error] [pid 1322775:tid 139928943941376] [client 37.168.68.199:0] AH01276: Cannot serve directory /home/fenouilmiatech/www/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Tue Mar 30 16:59:28.579203 2021] [core:info] [pid 1322775:tid 139928935548672] [client 37.168.68.199:0] AH00128: File does not exist: /home/fenouilmiatech/www/favicon.ico, referer: http://fenouilmiatech.alwaysdata.net/
+[Tue Mar 30 17:00:19.695473 2021] [core:error] [pid 1322760:tid 139929164608640] (21)Is a directory: AH00095: failed to remove PID file /home/fenouilmiatech/admin/config/apache/
+[Tue Mar 30 17:00:19.695497 2021] [mpm_event:notice] [pid 1322760:tid 139929164608640] AH00491: caught SIGTERM, shutting down
+[Tue Mar 30 17:00:19.706239 2021] [fcgid:info] [pid 1322774:tid 139929164608640] mod_fcgid: Process manager 1322774 stopped
+[Tue Mar 30 17:00:25.500760 2021] [mpm_event:notice] [pid 1338548:tid 140259654919296] AH00489: Apache/2.4.43 (Unix) configured -- resuming normal operations
+[Tue Mar 30 17:00:25.500831 2021] [mpm_event:info] [pid 1338548:tid 140259654919296] AH00490: Server built: Jul 17 2020 12:36:16
+[Tue Mar 30 17:00:25.500838 2021] [core:notice] [pid 1338548:tid 140259654919296] AH00094: Command line: '/usr/alwaysdata/apache/2.4.43/bin/apache -f /home/fenouilmiatech/admin/config/apache/apache.conf -D FOREGROUND'
+[Tue Mar 30 17:00:25.734543 2021] [autoindex:error] [pid 1338562:tid 140259638277888] [client 37.168.68.199:0] AH01276: Cannot serve directory /home/fenouilmiatech/www/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive

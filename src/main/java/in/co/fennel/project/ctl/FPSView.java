@@ -38,6 +38,8 @@ public interface FPSView {
 	
 	public String PAYMENT_VIEW = PAGE_FOLDER + "/PaymentView.jsp";
 	
+	public String CART_VIEW = PAGE_FOLDER + "/CartListView.jsp";
+	
 	public String SUCCESS_VIEW = PAGE_FOLDER + "/SuccessView.jsp";
 	
 	
@@ -62,6 +64,10 @@ public interface FPSView {
 	
 	public String ORDER_CTL = APP_CONTEXT + "/ctl/order";
 	public String ORDER_LIST_CTL = APP_CONTEXT + "/ctl/orderList";
+	
+	public String CART_CTL = APP_CONTEXT + "/ctl/addCart";
+	public String CART_LIST_CTL = APP_CONTEXT + "/ctl/cart";
+	
 	
 	public String CUSTOMER_CTL = APP_CONTEXT + "/ctl/customer";
 	public String CUSTOMER_LIST_CTL = APP_CONTEXT + "/ctl/customerList";

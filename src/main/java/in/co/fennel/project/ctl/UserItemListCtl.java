@@ -62,7 +62,7 @@ public class UserItemListCtl extends BaseCtl {
 			if(category!=null) {
 				bean.setCategory(category);
 			}
-			list = model.search(bean, pageNo, pageSize);
+			list = model.search(bean);
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("No Record Found", request);
 			}
@@ -120,7 +120,7 @@ public class UserItemListCtl extends BaseCtl {
 
 		}
 		try {
-			list = model.search(bean, pageNo, pageSize);
+			list = model.search(bean);
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("NO Record Found", request);
 			}

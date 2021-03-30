@@ -44,7 +44,7 @@ public abstract class BaseCtl extends HttpServlet
 	public static final String OP_BACK = "Back";
 	public static final String OP_LOG_OUT = "Logout";
 	public static final String OP_RESET = "Reset";
-	public static final String OP_PAYMENT = "Process To PayMent";
+	public static final String OP_PAYMENT = "Payment";
 	
 	public static final String OP_PAYMENT_BOOK = "Pay";
 	

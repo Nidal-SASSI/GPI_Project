@@ -1,3 +1,10 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="in.co.fennel.project.util.ServletUtility"%>
+<%@page import="java.util.List"%>
+<%@page import="in.co.fennel.project.bean.CartBean"%>
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.Locale"%>
 <%@page import="in.co.fennel.project.bean.ItemBean"%>
 <%@page import="in.co.fennel.project.ctl.OrderCtl"%>
 <%@page import="in.co.fennel.project.ctl.SendMailCtl"%>
@@ -27,7 +34,6 @@
 		<form class="row g-3" method="post" action="<%=FPSView.ORDER_CTL%>">
 			<jsp:useBean id="bean" class="in.co.fennel.project.bean.OrderBean"
 				scope="request"></jsp:useBean>
-				<% ItemBean item=(ItemBean)session.getAttribute("item"); %>
 			<div class="card">
 				<h5 class="card-header"
 					style="background-color: #18334f; color: white;">Check Out</h5>
@@ -36,27 +42,54 @@
 						<div class="col-md-5 col-lg-4 order-md-last">
 							<h4
 								class="d-flex justify-content-between align-items-center mb-3">
-								<span class="text-muted">Product Detail</span> 
+								<span class="text-muted">Item Detail</span> 
 							</h4>
-							<div class="card mb-3" style="max-width: 540px;">
-								<div class="row g-0">
-									<div class="col-md-4">
-										<img src="<%=FPSView.APP_CONTEXT + FPSView.GET_IMAGE_VIEW%>?id=<%=item.getId()%>&table=F_Items" alt="..." width="150px" height="200px">
-									</div>
-									<div class="col-md-8">
-										<div class="card-body">
-											<h5 class="card-title"><%=item.getName()%></h5>
-											<p class="card-text"><%=item.getDescription()%></p>
-											<h6 class="card-title" style="color: orange;"><%=item.getPrice()%></h6>
-										</div>
-									</div>
-								</div>
-							</div>
 
-							<div class="input-group">
-								<input type="text" class="form-control" name="quantity"
-									placeholder="Enter Quantity" required="required">
-							</div>
+							<table class="table table-bordered border-primary">
+					<thead>
+						<tr>
+						
+							<th scope="col">Image</th>
+							<th scope="col">Name</th>
+							<th scope="col">Price</th>
+							<th scope="col">Quantity</th>
+						</tr>
+					</thead>
+					<tbody>
+							<%
+							
+							Locale locale  = new Locale("en", "UK");
+							String pattern = "###.##";
+
+							DecimalFormat decimalFormat = (DecimalFormat)
+							        NumberFormat.getNumberInstance(locale);
+							decimalFormat.applyPattern(pattern);
+							
+									CartBean cbean = null;
+									List list = ServletUtility.getList(request);
+									Iterator<CartBean> it = list.iterator();
+									double total=0.0;
+									int i=1;
+									while (it.hasNext()) {
+										cbean = it.next();
+								%>
+						<tr>
+							
+							<td scope="row">
+							<img src="<%=FPSView.APP_CONTEXT+FPSView.GET_IMAGE_VIEW%>?id=<%=cbean.getItemId()%>&table=F_Items" width="100px" height="100px" ></td>
+							<td scope="row"><%=cbean.getItemName()%></td>
+							<td scope="row"><%=cbean.getPrice()%></td>
+							<td scope="row"><%=cbean.getQuantity()%></td>
+						</tr>
+						<% total += DataUtility.getDouble(cbean.getTotalPrice()); %>
+						<%} %>
+						<tr>
+							<td colspan="3">Total</td>
+							<td colspan="1"><%=total%></td>
+						</tr>
+						
+					</tbody>
+				</table>
 
 						</div>
 						<input type="hidden" name="id" value="<%=bean.getId()%>">
@@ -117,7 +150,7 @@
 								<div class="col-12">
 									<label for="address" class="form-label">Address</label> <textarea
 										 class="form-control" id="address" rows="3" cols="3" name="address1"
-										placeholder="Enter Address " required="required"
+										placeholder="Enter Address " required
 										><%=DataUtility.getStringData(bean.getAddress1())%>
 										</textarea>
 								</div>
@@ -125,7 +158,7 @@
 								<div class="col-12">
 									<label for="address2" class="form-label">Address 2 </label> <textarea
 										 class="form-control" id="address" rows="3" cols="3" name="address2"
-										placeholder="Enter Address 2 " required="required"
+										placeholder="Enter Address 2 " required
 										><%=DataUtility.getStringData(bean.getAddress2())%>
 										</textarea>
 								</div>
@@ -136,7 +169,7 @@
 							<hr class="my-4">
 
 							<input type="submit" name="operation"
-								value="<%=OrderCtl.OP_CHECK_OUT%>"
+								value="<%=OrderCtl.OP_PAYMENT%>"
 								class="btn btn-primary btn btn-info" />
 
 

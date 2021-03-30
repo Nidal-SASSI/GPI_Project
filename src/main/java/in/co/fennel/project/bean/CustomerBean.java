@@ -15,9 +15,19 @@ public class CustomerBean extends BaseBean{
 	private String commercialCategories;
 	private String password;
 	private int roleid;
+	private String category;
 	
 	
 	
+	
+	
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getUserName() {
 		return userName;
 	}
