@@ -10,29 +10,29 @@
 <body>
 <%@ include file="Header.jsp" %>
 <!-- Begin page content -->
-<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel"style="height: 600px">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel"style="height: 800px">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner" style="height: 600px">
+  <div class="carousel-inner" style="height: 800px">
     <div class="carousel-item active">
-      <img src="<%=FPSView.APP_CONTEXT%>/images/Fennel-Seeds.jpg" class="d-block w-100" alt="...">
+      <img src="<%=FPSView.APP_CONTEXT%>/images/PROMO5.jpeg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Some representative placeholder content for the first slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="<%=FPSView.APP_CONTEXT%>/images/fennel-crop-bebe6c918211424cba76408c8b6fdd08.jpg" class="d-block w-100" alt="...">
+      <img src="<%=FPSView.APP_CONTEXT%>/images/PROMO6.jpeg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Some representative placeholder content for the second slide.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="<%=FPSView.APP_CONTEXT%>/images/fennel-seeds-759-thinkstock.jpg" class="d-block w-100" alt="...">
+      <img src="<%=FPSView.APP_CONTEXT%>/images/PROMO7.jpeg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Some representative placeholder content for the third slide.</p>
