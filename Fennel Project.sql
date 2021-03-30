@@ -43,7 +43,7 @@ CREATE TABLE `f_admin` (
 
 LOCK TABLES `f_admin` WRITE;
 /*!40000 ALTER TABLE `f_admin` DISABLE KEYS */;
-INSERT INTO `f_admin` VALUES (1,'Admin','Admin','Admin123','Admin@123',1,'root','root','2021-03-22 21:31:31','2021-03-22 21:31:33'),(5,'GHARIS','AZWAW','AZWAW','azwaw@123',2,NULL,NULL,NULL,NULL),(6,'BABOU','Fatma','FATMA','FATMA',2,NULL,NULL,NULL,NULL),(7,'mazari','emilia','emilia','emilia',2,NULL,NULL,NULL,NULL),(8,'medane','aghiles','0753028920','aghi@123',2,NULL,NULL,NULL,NULL);
+INSERT INTO `f_admin` VALUES (1,'Admin','Admin','Admin123','Admin@123',1,'root','root','2021-03-22 21:31:31','2021-03-22 21:31:33'),(5,'GHARIS','AZWAW','AZWAW','azwaw@123',2,NULL,NULL,NULL,NULL),(6,'BABOU','Fatma','FATMA','FATMA',2,NULL,NULL,NULL,NULL),(7,'mazari','emilia','emilia','emilia',2,NULL,NULL,NULL,NULL),(8,'medane','aghiles','0753028920','aghi@123',2,NULL,NULL,NULL,NULL),(9,'ADRIEN','DUVAL','ADRIEN','1234',2,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `f_admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `f_customer` (
 
 LOCK TABLES `f_customer` WRITE;
 /*!40000 ALTER TABLE `f_customer` DISABLE KEYS */;
-INSERT INTO `f_customer` VALUES (6,'AZWAW','GHARIS','AZWAW','1996-08-23','Etudiant','35 rue des faisans Brunoy 91800','0758718798','gharisazwaw96@gmail.com','Particulier','azwaw@123',0,'Admin123','Admin123','2021-03-26 14:14:04','2021-03-26 14:14:04'),(7,'FATMA','BABOU','Fatma','1998-04-03','etudiant','9 place lucie aubrac','0753493346','fatma.babou1901@gmail.com','Particulier','FATMA',0,'Admin123','Admin123','2021-03-26 14:34:11','2021-03-26 14:34:11'),(8,'emilia','mazari','emilia','1999-04-01','etudiant','Particulier','0605849736','mazari.emilia@gmail.com','Particulier','emilia',0,'Admin123','Admin123','2021-03-26 14:36:35','2021-03-26 14:38:40'),(9,'0753028920','medane','aghiles','1999-03-30','student','4 générale leclerc','0753028920','aghilmdn9@gmail.com','particular','aghi@123',0,'Admin123','Admin123','2021-03-26 14:42:48','2021-03-26 14:43:35');
+INSERT INTO `f_customer` VALUES (6,'AZWAW','GHARIS','AZWAW','1996-08-23','Etudiant','35 rue des faisans Brunoy 91800','0758718798','gharisazwaw96@gmail.com','Particulier','azwaw@123',0,'Admin123','Admin123','2021-03-26 14:14:04','2021-03-26 14:14:04'),(7,'FATMA','BABOU','Fatma','1998-04-03','etudiant','9 place lucie aubrac','0753493346','fatma.babou1901@gmail.com','Particulier','FATMA',0,'Admin123','Admin123','2021-03-26 14:34:11','2021-03-26 14:34:11'),(8,'emilia','mazari','emilia','1999-04-01','etudiant','Particulier','0605849736','mazari.emilia@gmail.com','Particulier','emilia',0,'Admin123','Admin123','2021-03-26 14:36:35','2021-03-26 14:38:40'),(9,'0753028920','medane','aghiles','1999-03-30','student','4 générale leclerc','0753028920','aghilmdn9@gmail.com','particular','aghi@123',0,'Admin123','Admin123','2021-03-26 14:42:48','2021-03-26 14:43:35'),(10,'ADRIEN','ADRIEN','DUVAL','1990-01-01','salarie','31 Quai marcel boyer 92400','045678432','duvaladrien@gmail.com','Particulier','1234',0,'root','root','2021-03-30 20:46:44','2021-03-30 20:46:44');
 /*!40000 ALTER TABLE `f_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -205,4 +205,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-27  0:29:05
+-- Dump completed on 2021-03-30 23:45:08
