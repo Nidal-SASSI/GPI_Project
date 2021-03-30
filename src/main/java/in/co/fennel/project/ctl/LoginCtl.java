@@ -135,7 +135,12 @@ public class LoginCtl extends BaseCtl {
 		
 		String category=DataUtility.getString(request.getParameter("category"));
 		session.setAttribute("category",category);
-
+		
+		long iId=DataUtility.getLong(request.getParameter("iId"));
+		if(iId>0) {
+			session.setAttribute("iId",iId);
+		}
+		
 		if (id > 0) {
 			AdminBean userBean;
 			try {
@@ -200,8 +205,12 @@ public class LoginCtl extends BaseCtl {
 					return;
 				}else if(bean.getRoleId()==2) {
 					String category=DataUtility.getStringData(session.getAttribute("category"));
+					long iId=DataUtility.getLong(String.valueOf(session.getAttribute("iId")));
 					if(category!=null && category.length()>0) {
 						ServletUtility.redirect(FPSView.USER_ITEM_LIST_CTL+"?category="+category, request, response);
+						return;
+					}else if(iId>0) {
+						ServletUtility.redirect(FPSView.CART_CTL+"?iId="+iId, request, response);
 						return;
 					}else {
 						ServletUtility.redirect(FPSView.WELCOME_CTL, request, response);

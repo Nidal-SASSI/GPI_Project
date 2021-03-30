@@ -93,7 +93,7 @@
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark"
 		style="background-color: #18334f" aria-label="Main navigation">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Fenouil</a>
+			<a class="navbar-brand" href="#">Fennel</a>
 			<button class="navbar-toggler p-0 border-0" type="button"
 				data-bs-toggle="offcanvas" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -144,9 +144,12 @@
 					%>
 							<li class="nav-item"><a class="nav-link"
 						href="<%=FPSView.USER_ITEM_LIST_CTL%>">Items</a></li>
+						<li class="nav-item"><a class="nav-link"
+						href="<%=FPSView.CART_LIST_CTL%>">Cart</a></li>
 						
 						<li class="nav-item"><a class="nav-link"
 						href="<%=FPSView.ORDER_LIST_CTL%>">Order Report</a></li>
+						
 					<%
 					}} else {
 					%>
@@ -155,6 +158,11 @@
 						href="<%=FPSView.WELCOME_CTL%>">Home</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="<%=FPSView.LOGIN_CTL%>">Login</a></li>
+						
+							<li class="nav-item"><a class="nav-link"
+						href="<%=FPSView.USER_ITEM_LIST_CTL%>">Items</a></li>
+						
+						
 					<%
 					}
 					%>

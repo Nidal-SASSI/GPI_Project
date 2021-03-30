@@ -2,7 +2,9 @@ package in.co.fennel.project.ctl;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,14 +15,15 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-
 import in.co.fennel.project.bean.AdminBean;
 import in.co.fennel.project.bean.BaseBean;
+import in.co.fennel.project.bean.CartBean;
 import in.co.fennel.project.bean.CustomerBean;
 import in.co.fennel.project.bean.ItemBean;
 import in.co.fennel.project.bean.OrderBean;
 import in.co.fennel.project.exception.ApplicationException;
 import in.co.fennel.project.exception.DuplicateRecordException;
+import in.co.fennel.project.model.CartModel;
 import in.co.fennel.project.model.CustomerModel;
 import in.co.fennel.project.model.ItemModel;
 import in.co.fennel.project.model.OrderModel;
@@ -44,62 +47,7 @@ public class OrderCtl extends BaseCtl {
 	 * @param request
 	 * @return
 	 */
-	@Override
-	protected boolean validate(HttpServletRequest request) {
-		log.debug("OrderCtl validate method start");
-		boolean pass = true;
-		String op=DataUtility.getString(request.getParameter("operation"));
-		if(OP_PAYMENT_BOOK.equalsIgnoreCase(op)) {
-			return pass;
-		}
-
-		if (DataValidator.isNull(request.getParameter("name"))) {
-			request.setAttribute("name", PropertyReader.getValue("error.require", "Name"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("address1"))) {
-			request.setAttribute("address1", PropertyReader.getValue("error.require", "Address1"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("address2"))) {
-			request.setAttribute("address2", PropertyReader.getValue("error.require", "Address2"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("city"))) {
-			request.setAttribute("city", PropertyReader.getValue("error.require", "City"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("state"))) {
-			request.setAttribute("state", PropertyReader.getValue("error.require", "State"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("mobileNo"))) {
-			request.setAttribute("mobileNo", PropertyReader.getValue("error.require", "Mobile No"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("email"))) {
-			request.setAttribute("email", PropertyReader.getValue("error.require", "Email Id"));
-			pass = false;
-		} else if (!DataValidator.isEmail(request.getParameter("email"))) {
-			request.setAttribute("email", PropertyReader.getValue("error.invalid", "Email Id"));
-			pass = false;
-		}
-
-		if (DataValidator.isNull(request.getParameter("quantity"))) {
-			request.setAttribute("quantity", PropertyReader.getValue("error.require", "Quantity"));
-			pass = false;
-		}
-
-		log.debug("OrderCtl validate method end");
-		return pass;
-	}
-
+	
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 		log.debug("OrderCtl populateBean method start");
@@ -126,19 +74,24 @@ public class OrderCtl extends BaseCtl {
 			throws ServletException, IOException {
 		log.debug("OrderCtl doGet method start");
 
-		OrderBean bean=(OrderBean)populateBean(request);
-		
-		long itemId = DataUtility.getLong(request.getParameter("iId"));
+		OrderBean bean = (OrderBean) populateBean(request);
+
 		HttpSession session = request.getSession();
 		AdminBean abean = (AdminBean) session.getAttribute("user");
 		try {
-			CustomerBean cBean=new CustomerModel().findByUserName(abean.getLogin());
-			session.setAttribute("item", new ItemModel().getRecordByID(itemId));
+			CustomerBean cBean = new CustomerModel().findByUserName(abean.getLogin());
 			session.setAttribute("customer", cBean);
 			bean.setAddress1(cBean.getAddress());
-			bean.setName(cBean.getFirstName()+" "+cBean.getSurName());
+			bean.setName(cBean.getFirstName() + " " + cBean.getSurName());
 			bean.setEmail(cBean.getEmailID());
 			bean.setMobileNo(cBean.getPhoneNo());
+			AdminBean adminBean = (AdminBean) request.getSession().getAttribute("user");
+			CartBean crBean = new CartBean();
+			if (adminBean.getRoleId() == 2) {
+				crBean.setUserId(adminBean.getId());
+			}
+			List<CustomerBean> list = new CartModel().search(crBean);
+			ServletUtility.setList(list, request);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
 		}
@@ -159,28 +112,42 @@ public class OrderCtl extends BaseCtl {
 		HttpSession session = request.getSession();
 		long id = DataUtility.getLong(request.getParameter("id"));
 		try {
-			if (OP_CHECK_OUT.equalsIgnoreCase(op)) {
-				OrderBean bean = (OrderBean) populateBean(request);
-				ItemBean iBean = (ItemBean) session.getAttribute("item");
+			if (OP_PAYMENT.equalsIgnoreCase(op)) {
+				ArrayList<OrderBean> list = new ArrayList<OrderBean>();
 				AdminBean aBean = (AdminBean) session.getAttribute("user");
-				bean.setItemId(iBean.getId());
-				bean.setItemName(iBean.getName());
-				bean.setCategory(iBean.getCategory());
-				bean.setUserId(aBean.getId());
-				bean.setTime_slot(new Date());
-				bean.setOrderid(DataUtility.getRandom());
-				double price =DataUtility.getDouble(iBean.getPrice())*DataUtility.getDouble(bean.getQuantity());
-				bean.setTotal(String.valueOf(price));
-				session.setAttribute("order", bean);
+				CartBean cBean = new CartBean();
+				cBean.setUserId(aBean.getId());
+				List<CartBean> cartList = new CartModel().search(cBean);
+				ServletUtility.setList(cartList, request);
+				long orderId=DataUtility.getRandom();
+				session.setAttribute("orderId",orderId);
+				OrderBean obean = (OrderBean) populateBean(request);
+				session.setAttribute("orderBean",obean);
+				for (CartBean crBean : cartList) {
+					OrderBean bean = (OrderBean) populateBean(request);
+					bean.setOrderid(orderId);
+					bean.setUserId(aBean.getId());
+					bean.setTime_slot(new Date());
+					bean.setStatus("Success");
+					bean.setItemId(crBean.getItemId());
+					bean.setItemName(crBean.getItemName());
+					bean.setCategory(new ItemModel().getRecordByID(crBean.getId()).getCategory());
+					bean.setQuantity(crBean.getQuantity());
+					bean.setTotal(crBean.getTotalPrice());
+					list.add(bean);
+					new CartModel().delete(crBean);
+				}
+				session.setAttribute("orderList", list);
 				ServletUtility.forward(FPSView.PAYMENT_VIEW, request, response);
 				return;
 			} else if (OP_RESET.equalsIgnoreCase(op)) {
 				ServletUtility.redirect(FPSView.ORDER_CTL, request, response);
 				return;
 			} else if (OP_PAYMENT_BOOK.equalsIgnoreCase(op)) {
-				OrderBean orderBean = (OrderBean) session.getAttribute("order");
-				orderBean.setStatus("Success");
-				model.add(orderBean);
+				List<OrderBean> orderList = (List<OrderBean>) session.getAttribute("orderList");
+				for (OrderBean orBean : orderList) {
+					model.add(orBean);
+				}
 				ServletUtility.setSuccessMessage("Order Booked Successfully!!!", request);
 				ServletUtility.forward(FPSView.SUCCESS_VIEW, request, response);
 				return;

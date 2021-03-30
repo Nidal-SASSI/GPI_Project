@@ -57,16 +57,19 @@ protected long id;
 		this.modifiedDatetime = modifiedDatetime;
 	}
 
+	@Override
 	public int compareTo(BaseBean arg0) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	@Override
 	public String getKey() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public String getValue() {
 		// TODO Auto-generated method stub
 		return null;
