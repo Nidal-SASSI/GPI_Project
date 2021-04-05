@@ -61,7 +61,7 @@ public class CartCtl extends BaseCtl {
 		} catch (DuplicateRecordException e) {
 			e.printStackTrace();
 		}
-		ServletUtility.redirect(FPSView.CART_LIST_CTL, request, response);
+		ServletUtility.redirect(FPSView.USER_ITEM_LIST_CTL, request, response);
 		return;
 	}
 

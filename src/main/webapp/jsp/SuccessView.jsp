@@ -4,7 +4,6 @@
 <%@page import="in.co.fennel.project.util.DataUtility"%>
 <%@page import="in.co.fennel.project.bean.OrderBean"%>
 <%@page import="java.util.Date"%>
-<%@page import="org.apache.naming.java.javaURLContextFactory"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="in.co.fennel.project.bean.ItemBean"%>

@@ -13,7 +13,7 @@
 <br>
 <footer class="footer mt-auto py-3" style="background-color: #18334f">
   <div class="container">
-    <span class="text-muted">Copyright &copy <%= new SimpleDateFormat("yyyy").format(new Date()) %> Fennel. All Rights Reserved.</span>
+    <span class="text-muted">Copyright &copy <%= new SimpleDateFormat("yyyy").format(new Date()) %>Development by Team MIATECH</span>
   </div>
 </footer>
 
