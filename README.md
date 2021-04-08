@@ -1,8 +1,7 @@
 # Fenouil
-
 Le but de cet Application  consiste à implémenter une application web Java EE de prise et suivi des commandes FENOUIL
-## Pour commencer
 
+## Pour commencer
 Afin de faire fonctionner notre application sur votre machine, vous devez avoir le matériel ci-dessus.
 
 ### MATÉRIEL
@@ -10,8 +9,8 @@ Afin de faire fonctionner notre application sur votre machine, vous devez avoir 
 * [www.tomcat.apache.org/](http://tomcat.apache.org) Apache Tomcat (serveur web) 
 * [www.mysql.com/fr/](http://mysql.com/fr/) - MySQL et MySQL Workbench ( base de données)
 * [getbootstrap.com](http://getbootstrap.com) - Framework Bootstrap (front-end)
-### Installation
 
+### Installation
 -Importer le projet sur votre machine : 
 -Sur github , vous cliquez sur Code -> Download Zip
 
