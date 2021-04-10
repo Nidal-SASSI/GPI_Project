@@ -24,22 +24,13 @@ public class EmailBuilder {
 		StringBuilder msg = new StringBuilder();
 
 		msg.append("<HTML><BODY>");
-		msg.append("Registration is successful for ORS Project SUNRAYS Technologies");
-		msg.append("<H1>Hi! Greetings from SUNRAYS Technologies!</H1>");
+		msg.append("<H1> Merci d'avoir créé un compte pour accéder à Fenouil</H1>");
+		
+		
 		msg.append(
-				"<P>Congratulations for registering on ORS! You can now access your ORS account online - anywhere, anytime and  enjoy the flexibility to check the Marksheet Details.</P>");
-		msg.append(
-				"<P>Log in today at <a href='http://ors.sunraystechnologies.com'>http://ors.sunraystechnologies.com</a> with your following credentials:</P>");
-		msg.append("<P><B>Login Id : " + map.get("login") + "<BR>" + " Password : " + map.get("password") + "</B></p>");
-
-		msg.append(
-				"<P> As a security measure, we recommended that you change your password after you first log in.</p>");
-		msg.append(
-				"<p>For any assistance, please feel free to call us at +91 98273 60504 or 0731-4249244 helpline numbers.</p>");
-		msg.append("<p>You may also write to us at hrd@sunrays.co.in.</p>");
-		msg.append(
-				"<p>We assure you the best service at all times and look forward to a warm and long-standing association with you.</p>");
-		msg.append("<P><a href='http://www.sunrays.co.in' >-SUNRAYS Technolgies</a></P>");
+				"<P>Il vous suffit de cliquer sur le bouton ci-dessous pour vérifier votre email et utiliser pleinement nos services</p>");
+		
+		msg.append("<P><a href='http://localhost:8080/Fennel/' >-Fenouil Miatech</a></P>");
 		msg.append("</BODY></HTML>");
 
 		return msg.toString();
@@ -58,7 +49,7 @@ public class EmailBuilder {
 
 		msg.append("<HTML><BODY>");
 		msg.append("<H1>Your password is reccovered !! " + map.get("firstName") + " " + map.get("lastName") + "</H1>");
-		msg.append("<P><B>To access account user Login Id : " + map.get("login") + "<BR>" + " Password : "
+		msg.append("<P><B>Voici vos identifiants de connexion : : " + map.get("login") + "<BR>" + " Password : "
 				+ map.get("password") + "</B></p>");
 		msg.append("</BODY></HTML>");
 
@@ -75,10 +66,10 @@ public class EmailBuilder {
 		StringBuilder msg = new StringBuilder();
 
 		msg.append("<HTML><BODY>");
-		msg.append("<H1>Your Password has been changed Successfully !! " + map.get("firstName") + " "
+		msg.append("<H1>Mot de passe à jour " + map.get("firstName") + " "
 				+ map.get("lastName") + "</H1>");
 
-		msg.append("<P><B>To access account user Login Id : " + map.get("login") + "<BR>" + " Password : "
+		msg.append("<P><B>Voici vos identifiants de connexion : : " + map.get("login") + "<BR>" + " Password : "
 				+ map.get("password") + "</B></p>");
 		msg.append("</BODY></HTML>");
 
@@ -90,13 +81,15 @@ public class EmailBuilder {
 		StringBuilder msg = new StringBuilder();
 
 		msg.append("<HTML><BODY>");
-		msg.append("<H1>Welcome to Fennel System !! " + map.get("firstName") + " "
-				+ map.get("lastName") + "</H1>");
-		msg.append("<P><B>To access account user Login Id : " + map.get("login") + "<BR>" + " Password : "
-				+ map.get("password") + "</B></p>");
-		msg.append("<P><B>We Have Added New Advertisement to some items!!!</B></p>");
+		msg.append("<H1>Bonjour " + map.get("firstName") + " "	+ map.get("lastName") + "</H1>");
 		
-		msg.append("<P><B>Please check our new items ,Please follow this link  : "+map.get("link")+"</B></p>");
+		msg.append("<P><B>Profitons des beaux jours de Printemps</B></p>");
+		msg.append("<P><B>Les offres de Printemps continuent chez Fenouil !</B></p>");
+		
+		msg.append("<P><B>Les meilleures offres de la semaine sont ici : : "+map.get("link")+"</B></p>");
+		msg.append("<img src=\"https://www.bricorama.fr/media/wysiwyg/offre-du-mois/produit-gjardin21.jpg\" height=\"400px\" width=\"800px\" />\r\n"
+				+ "\r\n"
+				+ "");
 		
 		msg.append("</BODY></HTML>");
 
@@ -106,8 +99,8 @@ public class EmailBuilder {
 
 	public static void main(String[] args) {
 		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("login", "Rohan123");
-		map.put("password", "268651");
+		map.put("login", "AZWAW");
+		map.put("password", "azwaw@123");
 		System.out.println(EmailBuilder.getUserRegistrationMessage(map));
 	}
 }
